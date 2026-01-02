@@ -1,40 +1,38 @@
-# Cat Jam Synced
+# Cat-Jam Synced (Reborn)
 
-![preview](marketplace/preview.gif)
+![preview](assets/preview.gif)
 
-Make a cat appear next to your progress bar, jamming along with your music synchronized to the beat!
+A reborn and optimized Cat-Jam experience, perfectly in sync with your beat. Make a cat appear next to your progress bar, jamming along with your music synchronized to the beat!
 
-> ⚙ are located at the bottom of the regular Spotify settings.
+## Build & Installation
 
-# Changelog 📋
+### Prerequisites
+- [Bun](https://bun.sh) installed on your system.
 
-<h3>v1.2.5</h3>
+### Setup
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
+3. Build the project:
+   ```bash
+   bun run build
+   ```
+4. Copy the output to your Spicetify Extensions folder:
+   ```bash
+   cp dist/cat-jam.js ~/.config/spicetify/Extensions/
+   ```
+5. Apply the extension:
+   ```bash
+   spicetify config extensions cat-jam.js
+   spicetify apply
+   ```
 
-- Added better BPM calculation for songs based on songs danceability and energy.
-- Can be toggled from the settings.
-- Fixed minor bugs.
+## Development
+To watch for changes and rebuild automatically:
+```bash
+bun run watch
+```
 
-<h3>v1.2.0</h3>
-
-- Added ability to position and resize webM video to the left library.
-- Changed "Reload" button label to a "Save and reload".
-
-<h4>Dev changes </h4>
-
-- Changed from npm to yarn.
-
-<h3>v1.1</h3>
-
-- Added ability to select custom webM link and default BPM in the spotify settings tab.
-
----
-
-<h3>v1.0</h3>
-
-- Initial release
-
----
-
-## Made with Spicetify Creator
-
-- https://github.com/spicetify/spicetify-creator
+That's it! Now go forth and jam - just try not to let the cat out-vibe you. 🐾🎵
