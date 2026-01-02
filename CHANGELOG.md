@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### v2.1.0 (Real-time Analysis Update) 🐾⚡
+- **High-Precision Sync**: Switched to detailed sub-millisecond audio analysis (jk, just getting it from Spotify's internal endpoints) for better rhythm accuracy.
+- **Dynamic Pulsing**: Added intensity-based scaling, making the cat react to the current loudness of the track.
+- **Rhythm Interpolation**: Seamlessly handles tempo changes and complex segments for consistent jamming.
+
 ### v2.0.0 (Reborn)
 - **Modularization**: Completely refactored the monolithic codebase into focused modules.
 - **Build System**: Migrated from the deprecated [spicetify-creator](https://github.com/Spicetify/spicetify-creator) to a custom `esbuild` + `terser` setup powered by `bun`.
