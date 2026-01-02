@@ -9,13 +9,17 @@ export const APP_CONFIG = {
         MAX_LIBRARY_WIDTH: '300px',
     },
     DEFAULTS: {
-        VIDEO_URL: "https://github.com/BlafKing/spicetify-cat-jam-synced/raw/main/src/resources/catjam.webm",
+        VIDEO_URL: "https://github.com/FixeQD/spicetify-cat-jam-synced-reborn/raw/main/src/resources/catjam.webm",
         BPM: 135.48,
         SIZE: 100,
         RETRY_DELAY: 200,
         MAX_RETRIES: 10,
         SYNC_INTERVAL: 100,
         PROGRESS_THRESHOLD: 500,
+    },
+    VISUAL: {
+        MAX_SCALE: 1.15,
+        LOUDNESS_THRESHOLD: -40,
     },
     ALGORITHM: {
         DANCEABILITY_WEIGHT: 0.9,

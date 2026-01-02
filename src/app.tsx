@@ -25,22 +25,47 @@ async function main() {
 
     await createWebMVideo();
 
+    let animationId: number | null = null;
+    let lastUpdate = 0;
+
+    const updateLoop = async () => {
+        if (!Spicetify.Player.isPlaying()) {
+            animationId = null;
+            return;
+        }
+
+        const now = performance.now();
+        const progress = Spicetify.Player.getProgress();
+
+        const { playbackRate, loudness } = getDynamicAnalysis(progress);
+        const videoElement = getVideoElement();
+        
+        if (videoElement) {
+            videoElement.playbackRate = playbackRate;
+            const scale = 1 + (loudness * (APP_CONFIG.VISUAL.MAX_SCALE - 1));
+            videoElement.style.transform = `scale(${scale})`;
+        }
+
+        animationId = requestAnimationFrame(updateLoop);
+    };
+
+    const startLoop = () => {
+        if (!animationId) animationId = requestAnimationFrame(updateLoop);
+    };
+
     Spicetify.Player.addEventListener("onplaypause", () => {
-        syncTiming(performance.now(), Spicetify.Player.getProgress());
+        const progress = Spicetify.Player.getProgress();
+        syncTiming(performance.now(), progress);
+        if (Spicetify.Player.isPlaying()) {
+            startLoop();
+        }
     });
     
     let lastProgress = 0;
-    Spicetify.Player.addEventListener("onprogress", async () => {
+    Spicetify.Player.addEventListener("onprogress", () => {
         const progress = Spicetify.Player.getProgress();
         if (Math.abs(progress - lastProgress) >= APP_CONFIG.DEFAULTS.PROGRESS_THRESHOLD) {
             syncTiming(performance.now(), progress);
-
-            // Dynamic analysis update
-            const videoElement = getVideoElement();
-            if (videoElement) {
-                const { playbackRate } = await getDynamicAnalysis(progress);
-                videoElement.playbackRate = playbackRate;
-            }
         }
         lastProgress = progress;
     });
@@ -57,11 +82,18 @@ async function main() {
         if (audioData?.beats?.length) {
             const firstBeatStart = audioData.beats[0].start;
             const delay = Math.max(0, firstBeatStart * 1000 - (performance.now() - startTime));
-            setTimeout(() => getVideoElement()?.play(), delay);
+            setTimeout(() => {
+                getVideoElement()?.play();
+                startLoop();
+            }, delay);
         } else {
             videoElement.play();
+            startLoop();
         }
     });
+
+    // Initial start if already playing
+    if (Spicetify.Player.isPlaying()) startLoop();
 }
 
 export default main;

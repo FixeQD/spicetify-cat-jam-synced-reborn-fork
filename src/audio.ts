@@ -1,5 +1,6 @@
 import { APP_CONFIG } from "./config";
 import { cachedSettings } from "./settings";
+import { getLocalBPM, getLoudnessAt, normalizeLoudness } from "./analyzer";
 
 let audioData: any = null;
 const audioFeaturesCache = new Map<string, any>();
@@ -12,10 +13,9 @@ export function setAudioData(data: any) {
     audioData = data;
 }
 
-export async function getDynamicAnalysis(progressMs: number) {
+export function getDynamicAnalysis(progressMs: number) {
     if (!audioData) return { playbackRate: 1, loudness: 0.5 };
 
-    const { getLocalBPM, getLoudnessAt, normalizeLoudness } = await import("./analyzer");
     const progressSec = progressMs / 1000;
     const videoDefaultBPM = cachedSettings.bpm;
 
