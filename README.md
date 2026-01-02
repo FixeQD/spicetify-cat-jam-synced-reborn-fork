@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> This repository has been moved to: `https://github.com/FixeQD/spicetify-cat-jam-synced-reborn`.
+> This repository has been moved to: [`spicetify-cat-jam-synced-reborn`](https://github.com/FixeQD/spicetify-cat-jam-synced-reborn).
 > The original repository is not visible in the Spicetify Marketplace because the marketplace does not allow forks to be displayed.
 
 # Cat-Jam Synced (Reborn)
