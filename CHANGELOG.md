@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-### v1.3.0 (Reborn)
+### v2.0.0 (Reborn)
 - **Modularization**: Completely refactored the monolithic codebase into focused modules.
 - **Build System**: Migrated from the deprecated `spicetify-creator` to a custom `esbuild` + `terser` setup powered by `bun`.
 - **Optimization**: Significant bundle size reduction by mapping React/ReactDOM to Spicetify's internal globals.
