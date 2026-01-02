@@ -47,7 +47,6 @@ const runTerser = async () => {
       compress: {
         passes: 3,
         drop_console: false, // Keep logs for debugging
-        pure_funcs: ["console.debug"], // Strip debug logs in prod if desired
       },
       mangle: {
         toplevel: true,
