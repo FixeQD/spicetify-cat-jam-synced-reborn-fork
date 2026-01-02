@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "bun build.ts",
-    "watch": "bun build.ts --watch"
+    "watch": "bun build.ts --watch",
+    "format": "prettier -c -w ."
   },
   "license": "MIT",
   "devDependencies": {
@@ -12,6 +13,7 @@
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
     "esbuild": "^0.27.2",
+    "prettier": "^3.7.4",
     "terser": "^5.44.1"
   },
   "dependencies": {
